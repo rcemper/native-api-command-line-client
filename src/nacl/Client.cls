@@ -1,8 +1,8 @@
 Class nacl.Client
 {
 ClassMethod Connect(
-	serverIP = "192.168.0.9",
-	serverPORT = 1972,
+	serverIP = "192.168.0.11",
+	serverPORT = 61773,
 	namespace = "USER",
 	username = "_SYSTEM",
 	password = "SYS") As %Net.DB.Iris
