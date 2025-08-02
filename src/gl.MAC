@@ -1,4 +1,4 @@
-ROUTINE gl [Type=INT]
+ROUTINE gl [Type=MAC]
 gl ; list remote Global
    set global="^dc.MultiD"  ;; adjust as required    
 #;   set a=%rccdb.Function("%ZX","","quit $LB($D("_global_",%rcc),%rcc)")
