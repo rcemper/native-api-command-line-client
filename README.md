@@ -44,18 +44,23 @@ A simple remote global lister
 <p><pre>
  gl ; list remote Global
    set global="^dc.MultiD"  ;; adjust as required    
-   set a=%rccdb.Function("%ZX","","quit $LB($D("_global_",%rcc),%rcc)")    
+#;   set a=%rccdb.Function("%ZX","","quit $LB($D("_global_",%rcc),%rcc)")
+   set req="quit $LB($D("_global_",%rcc),%rcc)" 
+   set a=%rccdb.ClassMethodValue("%ZX.nacl","x",req)  
    Write !,global," = ",$li(a,2)," $DATA = ",$li(a),!     
    if $li(a)#10 {    
      for {     
-      set a=%rccdb.Function("%ZX","","q $LB($q(@$zr),@$ZR)")   
+#;      set a=%rccdb.Function("%ZX","","q $LB($q(@$zr),@$ZR)")   
+      set req="q $LB($q(@$zr),@$ZR)"   
+      set a=%rccdb.ClassMethodValue("%ZX.nacl","x",req)    
       quit:$li(a)=""    
       write $li(a), " = ", ##class(%Utility).FormatString($li(a,2)),!    
       }    
     }    
- Write "-------done----------",!   
+ Write "-------done----------",!      
 </pre></p>
 
 [Article in DC](https://community.intersystems.com/post/remote-global-listing-using-nativeapi-objectscript-2)
   
         
+
