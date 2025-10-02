@@ -1,14 +1,37 @@
-This is the ObjectScript client for IRIS NativeAPI Command extension  
+> Because of criticism by OEX reviewers, I have added more explanations    
+>  than usual.  Experts may excuse rewriting class docu
+This is the *ObjectScript* client for IRIS NativeAPI Command extension  
 It is not a click-and-run code but a draft that requires   
 adjustments for your special needs    
-you have to add   
+You have to add   
 - your credentials for server access    
 - your level of error handling    
 First,    
-you make a connection to the target SuperServer Port    
+you make a connection to the target SuperServer Port
+> required parameters: server-ip, SuperServerPort, namespace, Username, User_password)    
+> my defaults if not overloaded:   
+> serverIP="192.168.0.11",serverPORT=61773,namespace="USER",username="_SYSTEM", password="SYS" 
 ````   
-do ##class(nacl.Client).Connect("192.168.0.99",41773)   
-````    
+do ##class(nacl.Client).Connect("192.168.0.99",41773)     
+````
+> all required objects are now in your session ready for use   
+> USER\>ZWRITE    
+> %rccdb=\<OBJECT REFERENCE>[3@%Net.DB.Iris]    
+> %rccon=\<OBJECT REFERENCE>[2@%Net.DB.Connection]    
+> with more ZWRITE you ma< dig deeper
+> USER\>ZWRITE %rccdb    
+> %rccdb=3@%Net.DB.Iris  ; \<OREF,refs=1>    
+> +----------------- general information ---------------    
+> |      oref value: 3    
+> |      class name: %Net.DB.Iris   
+> | reference count: 1   
+> +----------------- attribute values ------------------   
+> +----------------- swizzled references ---------------   
+> |       i%Connection = ""   
+> |       r%Connection = "2@%Net.DB.Connection"    
+> +-----------------------------------------------------   
+
+
 Then you launch your command for remote execution      
 <p><pre>USER>write ##class(nacl.Client).Do(" quit $now() ")
 66698,68259.396554358
@@ -63,4 +86,5 @@ A simple remote global lister
 [Article in DC](https://community.intersystems.com/post/remote-global-listing-using-nativeapi-objectscript-2)
   
         
+
 
